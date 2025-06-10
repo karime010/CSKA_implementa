@@ -6,22 +6,23 @@ ventana.title("Cruz Silva Karime Arisbel")
 ventana.geometry("400x500")
 ventana.configure(bg="pink")
 
-
+# Variable para mostrar la expresión arriba
 expresion = tk.StringVar()
 expresion.set("")
 
-
+# Etiqueta para mostrar la expresión
 label_expr = tk.Label(ventana, textvariable=expresion, anchor="e",
                       font=("Arial", 12), bg="pink", fg="gray")
 label_expr.pack(padx=10, pady=(10, 0), fill="both")
 
-
+# Pantalla principal para el resultado
 pantalla = tk.Entry(ventana, font=("Arial", 15), borderwidth=3,
                     relief="solid", justify="right")
 pantalla.insert(0, "0")
 pantalla.config(state='readonly')
 pantalla.pack(padx=10, pady=5, fill="both")
 
+# FUNCIONES
 
 def concatenar(valor):
     pantalla.config(state='normal')
@@ -76,11 +77,11 @@ def igual():
         expresion.set("")
     pantalla.config(state='readonly')
 
-
+# MARCO PARA LOS BOTONES
 marco_botones = tk.Frame(ventana, bg="white")
 marco_botones.pack(padx=10, pady=10)
 
-
+# Lista de botones (ya sin el ±)
 botones = [
     ("C", 0, 0, limpia_todo),
     ("←", 0, 1, quita),
@@ -106,12 +107,10 @@ botones = [
     ("=", 4, 2, igual),
 ]
 
-
-
+# Crear los botones
 for texto, fila, columna, comando in botones:
     tk.Button(marco_botones, text=texto, font=("Arial", 13), width=6, height=2,
               bg="white", relief="ridge", command=comando).grid(row=fila, column=columna, padx=5, pady=5)
 
-
-
+# Ejecutar ventana
 ventana.mainloop()
